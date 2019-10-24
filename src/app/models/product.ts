@@ -6,5 +6,5 @@ export class Product {
     img: string;
     totalPrice: number;
     ms: string;
+    counter: number;
 }
-

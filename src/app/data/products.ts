@@ -8,7 +8,8 @@ export const PRODUCTS: Product[] = [
         amount: 0,
         totalPrice : 0,
         img: '../../assets/img/te-verde-propiedades.jpg',
-        ms: '2x1'
+        ms: '2x1',
+        counter: 1
     },
     {
         id: 'SR1',
@@ -17,7 +18,8 @@ export const PRODUCTS: Product[] = [
         amount: 0,
         totalPrice : 0,
         img: '../../assets/img/fresas.jpg',
-        ms: '3+ 4,50/u' 
+        ms: '3+ 4,50/u',
+        counter: 1
     },
     {
         id: 'CF1',
@@ -26,6 +28,7 @@ export const PRODUCTS: Product[] = [
         amount: 0,
         totalPrice : 0,
         img: '../../assets/img/coffee.jpg',
-        ms: '3+ 33% disc' 
+        ms: '3+ 33% disc',
+        counter: 1 
     }
 ];

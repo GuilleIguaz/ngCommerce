@@ -12,56 +12,104 @@ export class ProductsService {
 
     constructor(){}
 
-  addToCart(product, counter){
-    // amount calcs
+  addToCart(product){
+    // counter calcs
     let productToAdd = this.addedProducts.find(function(addedProduct){ 
       if(addedProduct.id === product.id){
         return addedProduct;
       }
     })
     if(productToAdd == undefined){
-      product.amount += counter;
+      product.amount += product.counter;
       this.addedProducts.push(product);
     }else{
-      productToAdd.amount += counter;
+      product.amount += product.counter;
     }
-    // totalPrice calcs
-    for(let j = 0; j < this.addedProducts.length; j++){
-      if(this.addedProducts[j].id === 'GR1'){
-       this.addedProducts[j].totalPrice = 
-        (Math.floor(
-         this.addedProducts[j].amount / 2
-       ) +
-         (this.addedProducts[j].amount % 2)) *
-       this.addedProducts[j].price;
-      }else if(this.addedProducts[j].id === 'SR1'){
-        if(this.addedProducts[j].amount <=3){
-       this.addedProducts[j].totalPrice = this.addedProducts[j].amount * this.addedProducts[j].price;
-        }else{
-         this.addedProducts[j].totalPrice =
-         4.5 * this.addedProducts[j].amount;
-        }
-     }else{
-       if(this.addedProducts[j].amount <= 3){
-       this.addedProducts[j].totalPrice = this.addedProducts[j].amount * this.addedProducts[j].price;
-       }else{
-         this.addedProducts[j].totalPrice =
-         (2/3) *
-         this.addedProducts[j].price *
-         this.addedProducts[j].amount;
-       }
-     }
-    }  
-  }
-
-  specialOffer(product){
+    // price calcs
     if(product.id === 'GR1'){
-      this.addToCart(product, 2);     
+      if(product.amount < 2){
+        product.totalPrice = product.amount *product.price;
+      }else{
+        // reset amount after method
+        product.amount -= 2;
+        this.specialOfferGR1(product);
+      }
+    }else if(product.amount <=3){
+      product.totalPrice = product.amount * product.price;
     }else{
-      this.addToCart(product, 4);
+      if(product.id === 'SR1'){
+        // reset
+        product.amount -= 4;
+        this.specialOfferSR1(product);
+      }else{
+        // reset
+        product.amount -= 4;
+        this.specialOfferCF1(product);
+     }
     }
   }
 
+  specialOfferGR1(product){
+    let productToAdd = this.addedProducts.find(function(addedProduct){ 
+      if(addedProduct.id === product.id){
+        return addedProduct;
+      }
+    })
+    if(productToAdd == undefined){
+      product.amount += 2;
+      product.totalPrice = 
+        (Math.floor(
+         product.amount / 2
+       ) +
+         (product.amount % 2)) *
+       product.price;
+    this.addedProducts.push(product);
+    }else{
+      product.amount += 2;
+      product.totalPrice = 
+      (Math.floor(
+        product.amount / 2
+      ) +
+        (product.amount % 2)) *
+        product.price;
+    }
+  }
+    
+  specialOfferSR1(product){
+    let productToAdd = this.addedProducts.find(function(addedProduct){ 
+      if(addedProduct.id === product.id){
+        return addedProduct;
+      }
+    })
+    if(productToAdd == undefined){
+      product.amount += 4;
+      product.totalPrice =
+         4.5 * product.amount;
+    this.addedProducts.push(product);
+    }else{
+      product.amount += 4;
+      product.totalPrice =
+      4.5 * product.amount;
+    }
+  }
+
+  specialOfferCF1(product){
+    let productToAdd = this.addedProducts.find(function(addedProduct){ 
+      if(addedProduct.id === product.id){
+        return addedProduct;
+      }
+    })
+    if(productToAdd == undefined){
+      product.amount += 4;
+      product.totalPrice =
+         ((2/3) * product.amount) * product.price;
+    this.addedProducts.push(product);
+    }else{
+      product.amount += 4;
+      product.totalPrice = ((2/3) * product.amount) * product.price;
+    }
+  } 
+    
   deleteProduct(product){
     // delete prod from added
     for(let i = 0 ; i < this.addedProducts.length; i++){
