@@ -1,0 +1,37 @@
+
+<div *ngIf = "addedProducts.length === 0;" class="row justify-content-center my-5 mx-auto">
+    <p>
+      Basket is empty, please add a product    
+    </p>
+</div>
+
+    <mat-card *ngFor="let addedProduct of addedProducts" class="row text-center justify-content-center my-2 mx-auto l-div">
+      
+          <div class="d-flex justify-content-between align-items-center">
+            <img [src]="addedProduct.img" alt="{{ addedProduct.name }}" class="img-fluid rounded">
+            <div class="d-flex flex-column justify-content-center container-fluid">
+              <mat-card-title>
+                  {{addedProduct.name}}
+              </mat-card-title>
+              <mat-card-subtitle>
+                &pound; {{addedProduct.totalPrice.toFixed(2)}}
+              </mat-card-subtitle>
+              <mat-card-footer>
+                {{addedProduct.amount}}
+                </mat-card-footer>
+            </div>
+            <button type="button" mat-stroked-button color="warn" (click)="deleteProduct(addedProduct)" class="d-flex justify-content-center px-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="red"/><path d="M0 0h24v24H0z" fill="none"/></svg>Delete
+            </button>
+          </div>
+    </mat-card>
+
+    <div class="text-center">
+      <button *ngIf = "addedProducts.length > 0;" type="button" mat-stroked-button color="warn" (click)="cleanCart()" class="px-3 my-2 l-button">
+          Empty
+      </button> 
+    </div>
+
+
+
+      
