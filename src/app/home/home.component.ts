@@ -12,11 +12,6 @@ export class HomeComponent implements OnInit {
 
   products = PRODUCTS;
   addedProducts = [];
-  // countGR1 = 1;
-  // countSR1 = 1;
-  // countCF1 = 1;
-
-  // creamos variables count para cada product y le asignamos 1, modificamos ese valor con incrementos y decrementos y cuando añadimos al carrito le pasamos ese valor a la cantidad del producto dentro de addedProducts
 
   constructor(
               public productsService: ProductsService,
@@ -29,7 +24,6 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(product) {
-    // asignamos cada counter a su correspondiente product
     if(product.id == 'GR1'){
       this.productsService.addToCart(product);
     }else if(product.id == 'SR1'){
@@ -40,13 +34,7 @@ export class HomeComponent implements OnInit {
   }
 
   incrementAmount(product){
-    if(product.id === 'GR1'){
       product.counter++;
-    }else if(product.id === 'SR1'){
-      product.counter++;
-    }else{
-      product.counter++;
-    }
   }
 
   decrementAmount(product){
@@ -54,22 +42,6 @@ export class HomeComponent implements OnInit {
       return;
     }
     product.counter--;
-    // if(product.id === 'GR1'){
-    //   if(product.count === 1){
-    //     return;
-    //   }
-    //   this.countGR1--;
-    // }else if(product.id === 'SR1'){
-    //   if(this.countSR1 === 1){
-    //     return;
-    //   }
-    //   this.countSR1--;
-    // }else{
-    //   if(this.countCF1 === 1){
-    //     return;
-    //   }
-    //   this.countCF1--;
-    // }
   }
 
   deleteProduct(product){
