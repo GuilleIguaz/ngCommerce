@@ -24,13 +24,7 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(product) {
-    if(product.id == 'GR1'){
-      this.productsService.addToCart(product);
-    }else if(product.id == 'SR1'){
-      this.productsService.addToCart(product);
-    }else{
-      this.productsService.addToCart(product);
-    }
+    this.productsService.addToCart(product);
   }
 
   incrementAmount(product){

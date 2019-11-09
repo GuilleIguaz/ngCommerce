@@ -27,13 +27,9 @@ export class ProductsService {
     }
     // price calcs
     if(product.id === 'GR1'){
-      if(product.amount < 2){
-        product.totalPrice = product.amount *product.price;
-      }else{
-        // reset amount after method
-        product.amount -= 2;
-        this.specialOfferGR1(product);
-      }
+      // reset amount after method
+      product.amount -= 2;
+      this.specialOfferGR1(product);
     }else if(product.amount <=3){
       product.totalPrice = product.amount * product.price;
     }else{

@@ -9,21 +9,7 @@
           <mat-card-subtitle>
             &pound; {{product.price}}
           </mat-card-subtitle>
-            <!-- <mat-card-footer class="d-flex justify-content-center my-2 align-items-center mx-1 foot" *ngIf="product.id === 'GR1'">
-              <button type="button" mat-mini-fab color="primary" (click)="incrementAmount(product)" class="px-1">+</button>
-              <input type="text" class="text-center" value="{{countGR1}}">
-              <button type="button" mat-mini-fab color="primary" (click)="decrementAmount(product)" class="px-1" [disabled]="countGR1 < 2">-</button>
-            </mat-card-footer>
-            <mat-card-footer class="d-flex justify-content-center my-2 align-items-center mx-1 foot" *ngIf="product.id === 'SR1'">
-              <button type="button" mat-mini-fab color="primary" (click)="incrementAmount(product)" class="px-1">+</button>
-              <input type="text" class="text-center" value="{{countSR1}}">
-              <button type="button" mat-mini-fab color="primary" (click)="decrementAmount(product)" class="px-1" [disabled]="countSR1 < 2">-</button>
-            </mat-card-footer>
-            <mat-card-footer class="d-flex justify-content-center my-2 align-items-center mx-1 foot" *ngIf="product.id === 'CF1'">
-              <button type="button" mat-mini-fab color="primary" (click)="incrementAmount(product)" class="px-1">+</button>
-              <input type="text" class="text-center" value="{{countCF1}}">
-              <button type="button" mat-mini-fab color="primary" (click)="decrementAmount(product)" class="px-1" [disabled]="countCF1 < 2">-</button>
-            </mat-card-footer> -->
+    
             <mat-card-footer class="d-flex justify-content-center my-2 align-items-center mx-1 foot">
               <button type="button" mat-mini-fab color="primary" (click)="incrementAmount(product)" class="px-1">+</button>
               <input type="text" class="text-center" value="{{product.counter}}">
